@@ -27,16 +27,16 @@ addMessage('main', (recipientId) => {
             "type":"template",
             "payload":{
               "template_type":"button",
-              "text":"메인메뉴",
+              "text":"메인 메뉴",
               "buttons":[
                 {
                   "type":"postback",
-                  "title":"매출정보",
+                  "title":"매출 정보",
                   "payload":"/income"
                 },
                 {
                   "type":"postback",
-                  "title":"실내환경",
+                  "title":"실내 환경",
                   "payload":"/environment"
                 },
                 {

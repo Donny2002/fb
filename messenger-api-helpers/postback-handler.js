@@ -28,17 +28,17 @@ addPostback('/environment', (recipientId) => {
             "buttons":[
               {
                 "type":"postback",
-                "title":"공기질",
+                "title":"실내 공기질 정보",
                 "payload":"/environment/fine_dust"
               },
               {
                 "type":"postback",
-                "title":"온도",
+                "title":"실내 온도 정보",
                 "payload":"/environment/temperature"
               },
               {
                 "type":"postback",
-                "title":"습도",
+                "title":"실내 습도 정보",
                 "payload":"/environment/humidity"
               }
             ]
@@ -51,11 +51,11 @@ addPostback('/environment', (recipientId) => {
 });
 
 addPostback('/environment/fine_dust', (recipientId) => {
-    sendAPI.sendTextMessage(recipientId, '현재 실내의 미세먼지 레벨은 value1 입니다.')
+    sendAPI.sendTextMessage(recipientId, '현재 실내의 미세먼지 레벨은 value1 입니다. 공기청정기를 가동할까요?')
 });
 
 addPostback('/environment/temperature', (recipientId) => {
-    sendAPI.sendTextMessage(recipientId, '현재 실내의 온도는 value2도 입니다.')
+    sendAPI.sendTextMessage(recipientId, '현재 실내의 온도는 value2도 입니다. 에어콘을 가동할까요?')
 });
 
 addPostback('/environment/humidity', (recipientId) => {
