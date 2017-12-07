@@ -14,6 +14,55 @@ const getHandler = (postback) => {
     return postbackHandler[postback];
 };
 
+addPostback('/environment', (recipientId) => {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        "attachment":{
+          "type":"template",
+          "payload":{
+            "template_type":"button",
+            "text":"관리하실 메뉴를 선택하세요",
+            "buttons":[
+              {
+                "type":"postback",
+                "title":"공기질",
+                "payload":"/environment/fine_dust"
+              },
+              {
+                "type":"postback",
+                "title":"온도",
+                "payload":"/environment/temperature"
+              },
+              {
+                "type":"postback",
+                "title":"습도",
+                "payload":"/environment/humidity"
+              }
+            ]
+          }
+        }
+      }
+    };
+
+    api.callMessagesAPI(messageData);
+});
+
+addPostback('/environment/fine_dust', (recipientId) => {
+    sendAPI.sendTextMessage(recipientId, '현재 실내의 미세먼지 레벨은 value1 입니다.')
+});
+
+addPostback('/environment/temperature', (recipientId) => {
+    sendAPI.sendTextMessage(recipientId, '현재 실내의 온도는 value2도 입니다.')
+});
+
+addPostback('/environment/humidity', (recipientId) => {
+    sendAPI.sendTextMessage(recipientId, '현재 실내의 습도가 높습니다. 제습기를 가동할까요? => (하부 DOM구조는 내일^^;)')
+});
+
+
 addPostback('/led', (recipientId) => {
     var messageData = {
       recipient: {

@@ -17,6 +17,41 @@ const getHandler = (message) => {
     return messageHandler[message];
 };
 
+addMessage('main', (recipientId) => {
+    var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text":"메인메뉴",
+              "buttons":[
+                {
+                  "type":"postback",
+                  "title":"매출정보",
+                  "payload":"/income"
+                },
+                {
+                  "type":"postback",
+                  "title":"실내환경",
+                  "payload":"/environment"
+                },
+                {
+                  "type":"postback",
+                  "title":"냉장고 관리",
+                  "payload":"/refrigerator"
+                }
+              ]
+            }
+          }
+        }
+    };
+    api.callMessagesAPI(messageData);
+});
+
 // 'help' 메시지를 처리할 함수 등록
 addMessage('help', (recipientId) => {
     var messageData = {
